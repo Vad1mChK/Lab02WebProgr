@@ -38,6 +38,7 @@ function dot(x, y, based){
 function placeAllDots() {
     $("#previous-results>tbody tr").each(function(i, element) {
         const self = $(this);
+        if(self.hasClass("no-records")) return;
         const x = self.find(".x").text().trim();
         const y = self.find(".y").text().trim();
         const hit = self.find(".hit").text().trim() === "база" ? true : false;
@@ -132,7 +133,6 @@ plot.onclick = function onPlotShoot(e) {
         let x = realToDrawnX(e.clientX - rect.left, r)
         let y = realToDrawnY(e.clientY - rect.top, r)
         console.log("x: " + x + "; y: " + y + "; r : " + r)
-        alert("")
         submit('control', 'POST', [
             { name: 'x', value: x },
             { name: 'y', value: y },

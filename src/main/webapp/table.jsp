@@ -23,13 +23,13 @@
   <tbody>
     <% LinkedList<ShootRecord> recordsList = (LinkedList<ShootRecord>) session.getAttribute("recordsList");
     if (recordsList == null || recordsList.isEmpty()) {%>
-    <tr>
+    <tr class="no-records">
       <td colspan="6">
         <p style="text-align: center"><i>Пока здесь нет записей. Сделайте выстрел, чтобы войти в историю!</i></p>
       </td>
     </tr>
-  <% } else {
-      for (ShootRecord current: recordsList) {%>
+  <% } else { %>
+    <%for (ShootRecord current: recordsList) {%>
     <tr>
       <td class="timestamp"><%= DateTimeFormatter
               .ofPattern("d MMM yyyy H:mm:ss", new Locale("ru", "RU"))
